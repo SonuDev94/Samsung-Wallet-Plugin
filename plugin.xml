@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.aub.mobilebanking.uk" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SamsungPlugin</name>
+    <js-module name="SamsungPlugin" src="www/SamsungPlugin.js">
+        <clobbers target="cordova.plugins.SamsungPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SamsungPlugin">
+                <param name="android-package" value="com.aub.mobilebanking.uk.SamsungPlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/SamsungPlugin.kt"
+            target-dir="app/src/main/kotlin/com/aub/mobilebanking/uk/" />
+        <source-file src="src/android/SamsungPayErrors.kt"
+            target-dir="app/src/main/kotlin/com/aub/mobilebanking/uk/" />
+        <source-file src="src/android/ErrorCode.kt"
+            target-dir="app/src/main/kotlin/com/aub/mobilebanking/uk/" />
+
+        <!-- SDK Files -->
+        <source-file src="src/android/libs/SamsungPaySDK_2.18.00_release.jar" target-dir="libs" />
+        <!-- END SDK Files -->
+
+        <!-- Gradle -->
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+        <!-- END Gradle -->
+        <resource-file src="src/android/res/values/samsung_strings.xml" target="res/values/samsung_strings.xml" />        <!-- Edit config.xml -->
+        <config-file target="res/xml/config.xml" parent="/*">
+            <preference name="GradlePluginKotlinVersion" value="1.9.24" />
+            <preference name="GradlePluginKotlinEnabled" value="true" />
+            <preference name="GradlePluginKotlinCodeStyle" value="official" />
+            <preference name="AndroidXEnabled" value="true" />
+        </config-file>
+        <!--    END Edit config.xml -->
+
+        <!-- Edit AndroidManifest.xml  -->
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <queries>
+                <package android:name="com.samsung.android.spay" />
+                <package android:name="com.samsung.android.samsungpay.gear" />
+            </queries>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data
+                android:name="spay_sdk_api_level"
+                android:value="2.18" />
+
+            <meta-data
+                android:name="debug_mode"
+                android:value="@string/app_debug_mode" />
+
+            <!-- <meta-data
+                android:name="spay_debug_api_key"
+                android:value="@string/app_spay_debug_api_key" /> -->
+        </config-file>
+        <!-- END Edit AndroidManifest.xml -->
+    </platform>
+</plugin>

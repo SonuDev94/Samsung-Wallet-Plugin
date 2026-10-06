@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_service_id">beb4e8f9a61b44f4a2ebbe</string>
+            <string name="app_debug_mode">N</string>
+            <string name="app_spay_debug_api_key">com.aub.mobilebanking.uk</string>
+            <string name="app_issuer_name">Kuwait Finance House PLC</string>
+            <string name="app_service_type">APP2APP</string>
+</resources>
